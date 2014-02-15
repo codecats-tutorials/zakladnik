@@ -1,0 +1,7 @@
+parameters:
+#    ssstrz_zakladnik.example.class: ssstrz\ZakladnikBundle\Example
+
+services:
+#    ssstrz_zakladnik.example:
+#        class: %ssstrz_zakladnik.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

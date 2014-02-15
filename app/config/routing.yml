@@ -1,0 +1,4 @@
+ssstrz_zakladnik:
+    resource: "@ssstrzZakladnikBundle/Resources/config/routing.yml"
+    prefix:   /
+
