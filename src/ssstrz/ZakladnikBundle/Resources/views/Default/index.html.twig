@@ -1,5 +1,7 @@
-<script type="text/javascript" src="{{ asset('bundles/ssstrzzakladnik/js/jquery-2.1.0.min.js') }}"></script>
-{% stylesheets '@ssstrzZakladnikBundle/Resources/public/less/style.less' %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-{% endstylesheets %}
-Hello {{ name }}!
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+    Hello {{ name }}!
+{% endblock %}
+

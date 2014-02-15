@@ -3,11 +3,15 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% stylesheets '@ssstrzZakladnikBundle/Resources/public/less/style.less' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('bundles/ssstrzzakladnik/js/jquery-2.1.0.min.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
