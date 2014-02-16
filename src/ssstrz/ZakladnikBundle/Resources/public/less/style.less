@@ -1,2 +1,38 @@
 @import "../../../../../../vendor/twitter/bootstrap/less/bootstrap.less";
 @import "variables.less";
+
+h3.brand *{
+    @start: rgba(147,206,222,1);
+    position: relative;
+    left: 40%;
+    top:-20px;
+    border: 3px solid darken(@start, 50%);
+    border-style: groove ridge ridge groove;
+    padding: 20px;
+    border-radius: 0 0 50% 50%;
+    background-color: @brand-primary;
+    color: darken(@start, 30%);
+    text-shadow: 1px 1px 2px darken(@start, 40%);
+    font-family: @font-family-serif;
+    font-size: @font-size-h3;
+    -webkit-box-shadow: 0px 10px 17px 5px darken(@start, 70%);
+    -moz-box-shadow: 0px 10px 17px 5px darken(@start, 70%);
+    box-shadow: 0px 10px 17px 5px darken(@start, 70%);
+    
+    background: rgba(147,206,222,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#49a5bf', GradientType=1 );
+}
+
+.bookmarks>*{
+    
+    padding: 10px;
+}
+.bookmarks>*>*{
+    border: 1px solid black;
+    padding: 10px;
+}
