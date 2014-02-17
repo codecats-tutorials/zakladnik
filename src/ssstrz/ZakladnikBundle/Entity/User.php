@@ -3,15 +3,19 @@
 namespace ssstrz\ZakladnikBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="UserRepository")
+ * @UniqueEntity(fields="email", message="This e-mail already taken")
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface, Serializable
 {
     /**
      * @var integer
@@ -26,6 +30,7 @@ class User implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $username;
 
@@ -40,6 +45,7 @@ class User implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\Email()
      */
     private $email;
 
@@ -59,8 +65,8 @@ class User implements UserInterface, \Serializable
      * Get id
      *
      * @return integer 
-     */
-    public function getId()
+     */ 
+   public function getId()
     {
         return $this->id;
     }

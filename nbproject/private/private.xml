@@ -5,7 +5,9 @@
         <group>
             <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/app/Resources/views/base.html.twig</file>
             <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/src/ssstrz/ZakladnikBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/app/config/security.yml</file>
             <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/src/ssstrz/ZakladnikBundle/Controller/DefaultController.php</file>
+            <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/src/ssstrz/ZakladnikBundle/Entity/User.php</file>
         </group>
     </open-files>
 </project-private>
