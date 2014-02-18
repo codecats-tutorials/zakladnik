@@ -7,9 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name, Request $request)
+    public function indexAction(Request $request)
     {
      //   $request->setLocale('p');
-        return $this->render('ssstrzZakladnikBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('ssstrzZakladnikBundle:Default:index.html.twig');
     }
 }

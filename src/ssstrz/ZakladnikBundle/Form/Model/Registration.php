@@ -2,13 +2,12 @@
 namespace ssstrz\ZakladnikBundle\Form\Model;
 
 use ssstrz\ZakladnikBundle\Entity\User;
-
 use Symfony\Component\Validator\Constraint as Assert;
 
 class Registration 
 {
     /**
-     * @Assert\Type(type=User")
+     * @Assert\Type(type="User")
      * @Assert\Valid()
      */
     protected $user;
@@ -20,7 +19,7 @@ class Registration
      */
     protected $termsAccepted;
     
-    public function setUser($user) 
+    public function setUser(User $user) 
     {
         $this->user = $user;
     }

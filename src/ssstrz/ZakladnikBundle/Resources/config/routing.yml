@@ -1,5 +1,5 @@
 ssstrz_zakladnik_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
     defaults: { _controller: ssstrzZakladnikBundle:Default:index }
 
 ssstrz_zakladnik_register:

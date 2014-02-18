@@ -1,5 +1,23 @@
-{% extends "ssstrzZakladnikBundle::layout.html.twig" %}
-{% block content %}    
+{% extends "::base.html.twig" %}
+{% block body %}
+<header class="header">
+    <nav class="container-fluid nav navbar-inverse">
+        <h3 class="brand"><a href="{{ path('ssstrz_zakladnik_homepage') }}">Zakładnik</a></h3>
+        <ul class="nav nav-tabs">
+            <li {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_sugestion' %}class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-share"></span>Sugestie</a></li>
+            <li {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_mine' %}class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-check"></span>Moje</a></li>
+            <li {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_add' %}class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-plus"></span>Dodaj</a></li>
+            <li class="pull-right {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_register' %}active{% endif %}">
+                <a href="{{ path('ssstrz_zakladnik_register') }}"><span class="glyphicon glyphicon-pencil"></span>Rejestracja</a>
+            </li>
+            <li class="pull-right {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_login' %}active{% endif %}">
+                <a href="#"><span class="glyphicon glyphicon-user"></span>Logowanie</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section class="container">
+    {% block content %}
     
     <article data-ride="carousel" class="carousel slide" id="carousel-example-captions">
       <ol class="carousel-indicators">
@@ -103,5 +121,17 @@
             </div>
         </div>
     </div>
-    {#{% trans %}Symfony2 is great{% endtrans %} {{ name }}!#}
+    {% trans %}Symfony2 is great{% endtrans %} {{ name }}!
+    <span class="glyphicon glyphicon-search"></span>
+    {% endblock %}
+</section>
+
+
+<footer>
+    <div class="navbar-inverse">
+        <p class="container text-info">aaaa</p>
+    </div>
+</footer>
+
+    
 {% endblock %}
