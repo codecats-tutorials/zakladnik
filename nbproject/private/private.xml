@@ -4,10 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/src/ssstrz/ZakladnikBundle/Controller/AccountController.php</file>
-            <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/src/ssstrz/ZakladnikBundle/Form/UserType.php</file>
             <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/src/ssstrz/ZakladnikBundle/Resources/views/Account/register.html.twig</file>
             <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/src/ssstrz/ZakladnikBundle/Form/RegistrationType.php</file>
-            <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/src/ssstrz/ZakladnikBundle/Resources/config/routing.yml</file>
             <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/src/ssstrz/ZakladnikBundle/Entity/User.php</file>
             <file>file:/home/t/www/vhosts/zakladnik.t/htdocs/Symfony/src/ssstrz/ZakladnikBundle/Form/Model/Registration.php</file>
         </group>

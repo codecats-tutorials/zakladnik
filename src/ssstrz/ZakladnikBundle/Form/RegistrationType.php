@@ -1,5 +1,4 @@
 <?php
-
 namespace ssstrz\ZakladnikBundle\Form;
 
 use ssstrz\ZakladnikBundle\Form\UserType;
