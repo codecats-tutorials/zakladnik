@@ -2,18 +2,44 @@
 
 namespace ssstrz\ZakladnikBundle\Controller;
 
+use ssstrz\ZakladnikBundle\Entity\User;
+use ssstrz\ZakladnikBundle\Form\LoginType;
+use ssstrz\ZakladnikBundle\Form\Model\Login;
 use ssstrz\ZakladnikBundle\Form\Model\Registration;
 use ssstrz\ZakladnikBundle\Form\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class AccountController extends Controller
 {
-    public function loginAction()
+    public function loginAction(Request $request)
     {
+        $form = $this->createForm(new LoginType(), new Login());
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $user = new User();
+            $user->setUsername($form->getData()->getLogin());
+            $user->setPassword($form->getData()->getPassword());
+            $token = new UsernamePasswordToken($user, $user->getPassword(), $user->getRoles());
+            $this->get('security.context')->setToken($token);
+            $event = new InteractiveLoginEvent($request, $token);
+            $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
+
+        }
+        
         return $this->render(
-                'ssstrzZakladnikBundle:Account:login.html.twig'
+                'ssstrzZakladnikBundle:Account:login.html.twig',
+                array('form' => $form->createView())
         );
+    }
+    
+    public function logoutAction() 
+    {
+        $this->get('security.context')->setToken(null);
+        $this->get('request')->getSession()->invalidate();
     }
 
     public function registerAction()

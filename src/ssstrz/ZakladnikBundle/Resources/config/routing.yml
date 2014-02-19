@@ -13,3 +13,7 @@ ssstrz_zakladnik_register_create:
 ssstrz_zakladnik_login:
     pattern: /login
     defaults: { _controller: ssstrzZakladnikBundle:Account:login }
+    
+ssstrz_zakladnik_logout:
+    pattern: /logout
+    defaults: { _controller: ssstrzZakladnikBundle:Account:logout }

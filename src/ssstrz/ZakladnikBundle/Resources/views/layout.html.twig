@@ -11,7 +11,7 @@
                 <a href="{{ path('ssstrz_zakladnik_register') }}"><span class="glyphicon glyphicon-pencil"></span>Rejestracja</a>
             </li>
             <li class="pull-right {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_login' %}active{% endif %}">
-                <a href="#"><span class="glyphicon glyphicon-user"></span>Logowanie</a>
+                <a href="{{ path('ssstrz_zakladnik_login') }}"><span class="glyphicon glyphicon-user"></span>Logowanie</a>
             </li>
         </ul>
     </nav>
