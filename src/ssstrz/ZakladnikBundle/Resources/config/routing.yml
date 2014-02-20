@@ -17,3 +17,7 @@ ssstrz_zakladnik_login:
 ssstrz_zakladnik_logout:
     pattern: /logout
     defaults: { _controller: ssstrzZakladnikBundle:Account:logout }
+    
+ssstrz_zakladnik_test:
+    pattern: /test
+    defaults: { _controller: ssstrzZakladnikBundle:Account:test }

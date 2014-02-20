@@ -19,7 +19,8 @@
         "sensio/framework-extra-bundle": "~3.0",
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
-        "twitter/bootstrap": "dev-pointer-events-note"
+        "twitter/bootstrap": "dev-pointer-events-note",
+        "ircmaxell/password-compat": "~1.0.3"
     },
     "scripts": {
         "post-install-cmd": [

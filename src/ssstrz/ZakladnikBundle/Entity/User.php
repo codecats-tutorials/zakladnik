@@ -38,6 +38,7 @@ class User implements UserInterface, Serializable
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=64)
+     * @Assert\Length(max="4096")
      */
     private $password;
 

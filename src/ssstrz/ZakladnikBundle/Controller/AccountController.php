@@ -14,6 +14,15 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class AccountController extends Controller
 {
+    public function testAction() 
+    {
+        $securityContext = $this->container->get('security.context');
+        if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
+            return $this->render('tt');
+        }    
+        
+        return null;
+    }
     public function loginAction(Request $request)
     {
         $form = $this->createForm(new LoginType(), new Login());
@@ -22,7 +31,11 @@ class AccountController extends Controller
         if ($form->isValid()) {
             $user = new User();
             $user->setUsername($form->getData()->getLogin());
-            $user->setPassword($form->getData()->getPassword());
+            $factory = $this->get('security.encoder_factory');
+
+            $encoder = $factory->getEncoder($user);
+            $password = $encoder->encodePassword($form->getData()->getPassword(), $user->getSalt());
+            $user->setPassword($password);
             $token = new UsernamePasswordToken($user, $user->getPassword(), $user->getRoles());
             $this->get('security.context')->setToken($token);
             $event = new InteractiveLoginEvent($request, $token);
@@ -63,7 +76,15 @@ class AccountController extends Controller
             $em = $this->getDoctrine()->getManager();
             
             $registration = $form->getData();
-            $em->persist($registration->getUser());
+            
+            $factory = $this->get('security.encoder_factory');
+            $user = $registration->getUser();
+
+            $encoder = $factory->getEncoder($user);
+            $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
+            $user->setPassword($password);
+            
+            $em->persist($user);
             $em->flush();
             
             return $this->redirect($this->generateUrl('ssstrz_zakladnik_login'));
