@@ -9,43 +9,44 @@ use ssstrz\ZakladnikBundle\Form\Model\Registration;
 use ssstrz\ZakladnikBundle\Form\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class AccountController extends Controller
 {
     public function testAction() 
     {
+        $user = new User();
         $securityContext = $this->container->get('security.context');
-        if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
-            return $this->render('tt');
-        }    
+     //   if( $securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
+        $factory = $this->get('security.encoder_factory');
+        $encoder = $factory->getEncoder($user);
+        $password = $encoder->encodePassword('rayan', $user->getSalt());
         
-        return null;
+        return $this->render('ssstrzZakladnikBundle::test.html.twig', 
+                array( 'res' => $password)
+        );
+   //     }    
     }
     public function loginAction(Request $request)
     {
         $form = $this->createForm(new LoginType(), new Login());
-        $form->handleRequest($request);
+        $request = $this->getRequest();
+        $session = $request->getSession();
         
-        if ($form->isValid()) {
-            $user = new User();
-            $user->setUsername($form->getData()->getLogin());
-            $factory = $this->get('security.encoder_factory');
-
-            $encoder = $factory->getEncoder($user);
-            $password = $encoder->encodePassword($form->getData()->getPassword(), $user->getSalt());
-            $user->setPassword($password);
-            $token = new UsernamePasswordToken($user, $user->getPassword(), $user->getRoles());
-            $this->get('security.context')->setToken($token);
-            $event = new InteractiveLoginEvent($request, $token);
-            $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
-
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        } else {
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
+       
         
         return $this->render(
                 'ssstrzZakladnikBundle:Account:login.html.twig',
-                array('form' => $form->createView())
+                array(
+                    'form' => $form->createView(),
+                    'error'         => $error
+                )
         );
     }
     
@@ -53,6 +54,8 @@ class AccountController extends Controller
     {
         $this->get('security.context')->setToken(null);
         $this->get('request')->getSession()->invalidate();
+        
+        return $this->redirect($this->generateUrl('ssstrz_zakladnik_login'));
     }
 
     public function registerAction()

@@ -14,7 +14,9 @@ class LoginType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) 
     {
-        $builder->add('login')->add('password', 'password')->add('Submit', 'submit');
+        $builder->add('login')
+                ->add('password', 'password')
+                ->add('Submit', 'submit');
     }
     
     public function getName() 

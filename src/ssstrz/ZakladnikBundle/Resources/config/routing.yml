@@ -21,3 +21,13 @@ ssstrz_zakladnik_logout:
 ssstrz_zakladnik_test:
     pattern: /test
     defaults: { _controller: ssstrzZakladnikBundle:Account:test }
+   
+login_check:
+  path: /login_check
+
+login:
+  path: /login_standard
+  defaults: { _controller: ssstrzZakladnikBundle:Account:login }
+
+account:
+    path: /
