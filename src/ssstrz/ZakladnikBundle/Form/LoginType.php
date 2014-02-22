@@ -23,6 +23,4 @@ class LoginType extends AbstractType
     {
         return 'login';
     }
-
-//put your code here
 }

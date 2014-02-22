@@ -31,3 +31,18 @@ login:
 
 account:
     path: /
+my:
+    pattern: /my
+    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:my }
+
+add:
+    pattern: /add
+    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:add }
+
+remove:
+    pattern: /remove
+    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:remove }
+
+suggestion:
+    pattern: /suggestion
+    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:suggestion }
