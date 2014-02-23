@@ -1,7 +1,4 @@
-{% extends "::base.html.twig" %}
-
-{% block title %}ssstrzZakladnikBundle:Bookmark:add{% endblock %}
-
-{% block body %}
-<h1>Welcome to the Bookmark:add page</h1>
+{% extends "ssstrzZakladnikBundle::layout.html.twig" %}
+{% block content %}    
+    {{ form(form) }}
 {% endblock %}

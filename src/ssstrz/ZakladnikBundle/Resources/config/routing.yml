@@ -1,3 +1,19 @@
+ssstrz_zakladnik_add:
+    pattern:  /add
+    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:add }
+    
+ssstrz_zakladnik_my:
+    pattern:  /my
+    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:my }
+
+ssstrz_zakladnik_suggestion:
+    pattern:  /suggestion
+    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:suggestion }
+
+ssstrz_zakladnik_remove:
+    pattern:  /remove
+    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:remove }
+    
 ssstrz_zakladnik_homepage:
     pattern:  /
     defaults: { _controller: ssstrzZakladnikBundle:Default:index }

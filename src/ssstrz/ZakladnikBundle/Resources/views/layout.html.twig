@@ -4,19 +4,37 @@
     <nav class="container-fluid nav navbar-inverse">
         <h3 class="brand"><a href="{{ path('ssstrz_zakladnik_homepage') }}">Zakładnik</a></h3>
         <ul class="nav nav-tabs">
-            <li {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_sugestion' %}class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-share"></span>Sugestie</a></li>
-            <li {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_mine' %}class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-check"></span>Moje</a></li>
-            <li {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_add' %}class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-plus"></span>Dodaj</a></li>
+            <li {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_suggestion' %}class="active"{% endif %}>
+                <a href="{{ path('ssstrz_zakladnik_suggestion') }}">
+                    <span class="glyphicon glyphicon-share"></span>Sugestie
+                </a>
+            </li>
+            <li {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_my' %}class="active"{% endif %}>
+                <a href="{{ path('ssstrz_zakladnik_my') }}">
+                    <span class="glyphicon glyphicon-check"></span>Moje
+                </a>
+            </li>
+            <li {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_add' %}class="active"{% endif %}>
+                <a href="{{ path('ssstrz_zakladnik_add') }}">
+                    <span class="glyphicon glyphicon-plus"></span>Dodaj
+                </a>
+            </li>
     {% if not app.user %}
             <li class="pull-right {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_register' %}active{% endif %}">
-                <a href="{{ path('ssstrz_zakladnik_register') }}"><span class="glyphicon glyphicon-pencil"></span>Rejestracja</a>
+                <a href="{{ path('ssstrz_zakladnik_register') }}">
+                    <span class="glyphicon glyphicon-pencil"></span>Rejestracja
+                </a>
             </li>
             <li class="pull-right {% if app.request.attributes.get('_route') == 'ssstrz_zakladnik_login' %}active{% endif %}">
-                <a href="{{ path('ssstrz_zakladnik_login') }}"><span class="glyphicon glyphicon-user"></span>Logowanie</a>
+                <a href="{{ path('ssstrz_zakladnik_login') }}">
+                    <span class="glyphicon glyphicon-user"></span>Logowanie
+                </a>
             </li>
     {% else %}
             <li class="pull-right">
-                <a href="{{ path('ssstrz_zakladnik_logout') }}"><span class="glyphicon glyphicon-user"></span>Wyloguj</a>
+                <a href="{{ path('ssstrz_zakladnik_logout') }}">
+                    <span class="glyphicon glyphicon-user"></span>Wyloguj
+                </a>
             </li>
     {% endif %}
         </ul>
