@@ -9,8 +9,18 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BookmarkController extends Controller
 {
+    public function subscribeAction(Request $request) 
+    {
+        
+    }
     public function myAction()
     {
+        $user = $this->getUser();
+        $bookmarks = $user->getSubscriptions();
+        return $this->render(
+                'ssstrzZakladnikBundle:Bookmark:my.html.twig',
+                array('bookmarks' => $bookmarks)
+        );
     }
 
     public function addAction(Request $request)

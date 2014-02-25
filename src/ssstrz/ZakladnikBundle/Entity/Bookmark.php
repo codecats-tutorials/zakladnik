@@ -38,10 +38,15 @@ class Bookmark
     private $url;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ssstrz\ZakladnikBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="ssstrz\ZakladnikBundle\Entity\User", inversedBy="bookmarksCreated")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      */
     private $author;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="ssstrz\ZakladnikBundle\Entity\User", mappedBy="subscriptions")
+     */
+    private $subscribers;
 
     /**
      * Get id
@@ -120,5 +125,45 @@ class Bookmark
     public function getAuthor()
     {
         return $this->author;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subscribers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add subscribers
+     *
+     * @param \ssstrz\ZakladnikBundle\Entity\User $subscribers
+     * @return Bookmark
+     */
+    public function addSubscriber(\ssstrz\ZakladnikBundle\Entity\User $subscribers)
+    {
+        $this->subscribers[] = $subscribers;
+
+        return $this;
+    }
+
+    /**
+     * Remove subscribers
+     *
+     * @param \ssstrz\ZakladnikBundle\Entity\User $subscribers
+     */
+    public function removeSubscriber(\ssstrz\ZakladnikBundle\Entity\User $subscribers)
+    {
+        $this->subscribers->removeElement($subscribers);
+    }
+
+    /**
+     * Get subscribers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubscribers()
+    {
+        return $this->subscribers;
     }
 }

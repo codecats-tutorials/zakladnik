@@ -62,9 +62,9 @@ class User implements UserInterface, Serializable
      * @ORM\OneToMany(targetEntity="ssstrz\ZakladnikBundle\Entity\Bookmark", mappedBy="author")
      */
     private $bookmarksCreated;
-    
+
     /**
-     * @ORM\ManyToMany(targetEntity="ssstrz\ZakladnikBundle\Entity\Bookmark", inversedBy="subscribers")
+     * @ORM\ManyToMany(targetEntity="ssstrz\ZakladnikBundle\Entity\Bookmark")
      */
     private $subscriptions;
 

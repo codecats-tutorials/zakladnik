@@ -1,7 +1,13 @@
-{% extends "::base.html.twig" %}
+{% extends "ssstrzZakladnikBundle::layout.html.twig" %}
 
-{% block title %}ssstrzZakladnikBundle:Bookmark:my{% endblock %}
+{% block title %}Moje{% endblock %}
 
-{% block body %}
-<h1>Welcome to the Bookmark:my page</h1>
+{% block content %}
+    {% for bookmark in bookmarks %}
+        {{ bookmark.url }}
+    {% else %}
+No subscribtions.
+    {% endfor %}
+    
+
 {% endblock %}
