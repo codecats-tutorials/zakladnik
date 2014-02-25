@@ -10,8 +10,12 @@ ssstrz_zakladnik_suggestion:
     pattern:  /suggestion
     defaults: { _controller: ssstrzZakladnikBundle:Bookmark:suggestion }
 
+ssstrz_zakladnik_subscribe:
+    pattern: /subscribe/{id}
+    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:subscribe }
+
 ssstrz_zakladnik_remove:
-    pattern:  /remove
+    pattern:  /remove/{id}
     defaults: { _controller: ssstrzZakladnikBundle:Bookmark:remove }
     
 ssstrz_zakladnik_homepage:

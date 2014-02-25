@@ -72,6 +72,7 @@ class User implements UserInterface, Serializable
     {
         $this->setIsActive(true);
         $this->bookmarksCreated = new ArrayCollection();
+        $this->subscriptions = new ArrayCollection();
     }
     /**
      * Get id
@@ -240,10 +241,10 @@ class User implements UserInterface, Serializable
     /**
      * Add subscriptions
      *
-     * @param \ssstrz\ZakladnikBundle\Entity\User $subscriptions
+     * @param \ssstrz\ZakladnikBundle\Entity\Bookmark $subscriptions
      * @return User
      */
-    public function addSubscription(\ssstrz\ZakladnikBundle\Entity\User $subscriptions)
+    public function addSubscription(\ssstrz\ZakladnikBundle\Entity\Bookmark $subscriptions)
     {
         $this->subscriptions[] = $subscriptions;
 
@@ -253,9 +254,9 @@ class User implements UserInterface, Serializable
     /**
      * Remove subscriptions
      *
-     * @param \ssstrz\ZakladnikBundle\Entity\User $subscriptions
+     * @param \ssstrz\ZakladnikBundle\Entity\Bookmark $subscriptions
      */
-    public function removeSubscription(\ssstrz\ZakladnikBundle\Entity\User $subscriptions)
+    public function removeSubscription(\ssstrz\ZakladnikBundle\Entity\Bookmark $subscriptions)
     {
         $this->subscriptions->removeElement($subscriptions);
     }

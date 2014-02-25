@@ -9,17 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BookmarkController extends Controller
 {
-    public function subscribeAction(Request $request) 
-    {
-        
-    }
     public function myAction()
     {
         $user = $this->getUser();
         $bookmarks = $user->getSubscriptions();
+        
         return $this->render(
                 'ssstrzZakladnikBundle:Bookmark:my.html.twig',
-                array('bookmarks' => $bookmarks)
+                array('bookmarks' => $bookmarks, 'users' => $bookmarks[0]->getSubscribers())
         );
     }
 
@@ -36,8 +33,11 @@ class BookmarkController extends Controller
             }
             $user = $this->getUser();
             $bookmark->setAuthor($user);
+            $bookmark->addSubscriber($user);
+            $user->addSubscription($bookmark);
             $em = $this->getDoctrine()->getManager();
             $em->persist($bookmark);
+            $em->persist($user);
             $em->flush();
         }
         
@@ -46,9 +46,17 @@ class BookmarkController extends Controller
                 array('form' => $form->createView())
         );
     }
-
-    public function removeAction()
+    
+    public function subscribeAction($id) 
     {
+        $user = $this->getUser();
+        $bookmark = new Bookmark();
+        
+    }
+
+    public function removeAction($id)
+    {
+        
     }
 
     public function suggestionAction()

@@ -3,11 +3,14 @@
 {% block title %}Moje{% endblock %}
 
 {% block content %}
+<div class="row">
     {% for bookmark in bookmarks %}
+<div class="col-4 col-lg-4">
         {{ bookmark.url }}
+    <div><a href="{{ path('ssstrz_zakladnik_remove', {'id':bookmark.id}) }}">unsub</a></div>
+</div>
     {% else %}
 No subscribtions.
     {% endfor %}
-    
-
+</div>
 {% endblock %}
