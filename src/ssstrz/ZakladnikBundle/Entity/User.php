@@ -2,6 +2,8 @@
 
 namespace ssstrz\ZakladnikBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -59,12 +61,12 @@ class User implements UserInterface, Serializable
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="ssstrz\ZakladnikBundle\Entity\Bookmark", mappedBy="author")
+     * @ORM\OneToMany(targetEntity="Bookmark", mappedBy="author")
      */
     private $bookmarksCreated;
     
     /**
-     * @ORM\ManyToMany(targetEntity="ssstrz\ZakladnikBundle\Entity\Bookmark", inversedBy="subscribers")
+     * @ORM\ManyToMany(targetEntity="Bookmark", inversedBy="subscribers")
      */
     private $subscriptions;
 
@@ -208,10 +210,10 @@ class User implements UserInterface, Serializable
     /**
      * Add bookmarksCreated
      *
-     * @param \ssstrz\ZakladnikBundle\Entity\Bookmark $bookmarksCreated
+     * @param Bookmark $bookmarksCreated
      * @return User
      */
-    public function addBookmarksCreated(\ssstrz\ZakladnikBundle\Entity\Bookmark $bookmarksCreated)
+    public function addBookmarksCreated(Bookmark $bookmarksCreated)
     {
         $this->bookmarksCreated[] = $bookmarksCreated;
 
@@ -221,9 +223,9 @@ class User implements UserInterface, Serializable
     /**
      * Remove bookmarksCreated
      *
-     * @param \ssstrz\ZakladnikBundle\Entity\Bookmark $bookmarksCreated
+     * @param Bookmark $bookmarksCreated
      */
-    public function removeBookmarksCreated(\ssstrz\ZakladnikBundle\Entity\Bookmark $bookmarksCreated)
+    public function removeBookmarksCreated(Bookmark $bookmarksCreated)
     {
         $this->bookmarksCreated->removeElement($bookmarksCreated);
     }
@@ -231,7 +233,7 @@ class User implements UserInterface, Serializable
     /**
      * Get bookmarksCreated
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Collection 
      */
     public function getBookmarksCreated()
     {
@@ -241,10 +243,10 @@ class User implements UserInterface, Serializable
     /**
      * Add subscriptions
      *
-     * @param \ssstrz\ZakladnikBundle\Entity\Bookmark $subscriptions
+     * @param Bookmark $subscriptions
      * @return User
      */
-    public function addSubscription(\ssstrz\ZakladnikBundle\Entity\Bookmark $subscriptions)
+    public function addSubscription(Bookmark $subscriptions)
     {
         $this->subscriptions[] = $subscriptions;
 
@@ -254,9 +256,9 @@ class User implements UserInterface, Serializable
     /**
      * Remove subscriptions
      *
-     * @param \ssstrz\ZakladnikBundle\Entity\Bookmark $subscriptions
+     * @param Bookmark $subscriptions
      */
-    public function removeSubscription(\ssstrz\ZakladnikBundle\Entity\Bookmark $subscriptions)
+    public function removeSubscription(Bookmark $subscriptions)
     {
         $this->subscriptions->removeElement($subscriptions);
     }
@@ -264,7 +266,7 @@ class User implements UserInterface, Serializable
     /**
      * Get subscriptions
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Collection 
      */
     public function getSubscriptions()
     {

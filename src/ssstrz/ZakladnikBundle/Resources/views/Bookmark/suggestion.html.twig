@@ -1,4 +1,11 @@
 {% extends "ssstrzZakladnikBundle::layout.html.twig" %}
 {% block content %}    
-
+{#{{ result }}#}
+<div class="row">
+    {% for bookmark in result %}
+    <div class="col-md-4"><a target="blank" href="{{ bookmark[0].url }}">{{ bookmark[0].title }}</a></div>
+    {% else %}
+    <div>No subscribtions.</div>
+    {% endfor %}
+</div>
 {% endblock %}
