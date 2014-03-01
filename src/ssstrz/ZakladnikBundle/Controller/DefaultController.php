@@ -9,7 +9,12 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-     //   $request->setLocale('p');
-        return $this->render('ssstrzZakladnikBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $bookmarks = $em->getRepository('ssstrzZakladnikBundle:Bookmark')->findAll();
+        
+        return $this->render(
+                'ssstrzZakladnikBundle:Default:index.html.twig',
+                array('bookmarks' => $bookmarks)
+        );
     }
 }

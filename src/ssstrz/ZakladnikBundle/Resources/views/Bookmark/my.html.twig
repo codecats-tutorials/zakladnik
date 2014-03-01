@@ -3,11 +3,18 @@
 {% block title %}Moje{% endblock %}
 
 {% block content %}
-<div class="row">
+<div class="row bookmarks">
     {% for bookmark in bookmarks %}
-<div class="col-4 col-lg-4">
-        {{ bookmark.url }}
-    <div><a href="{{ path('ssstrz_zakladnik_remove', {'id':bookmark.id}) }}">unsub</a></div>
+<div class="col-md-4 col-lg-4">
+    <div>
+        <div>
+            <a target="blank" href="{{ bookmark.url }}">{{ bookmark.title }}</a>
+        </div>
+        <hr>
+        <div>
+            <a href="{{ path('ssstrz_zakladnik_remove', {'id':bookmark.id}) }}">unsub</a>
+        </div>
+    </div>
 </div>
     {% else %}
 No subscribtions.

@@ -1,11 +1,22 @@
 {% extends "ssstrzZakladnikBundle::layout.html.twig" %}
-{% block content %}    
-{#{{ result }}#}
-<div class="row">
+{% block content %}
+<div class="row bookmarks">
     {% for bookmark in result %}
-    <div class="col-md-4"><a target="blank" href="{{ bookmark[0].url }}">{{ bookmark[0].title }}</a></div>
+    <div class="col-4 col-lg-4">
+        <div>
+            <a target="blank" href="{{ bookmark[0].url }}">
+            {{ bookmark[0].title }}
+            </a>
+            <hr>
+            <div>
+                <a href="{{ path('ssstrz_zakladnik_subscribe', {id:bookmark[0].id}) }}">
+                    sub
+                </a>
+            </div>
+        </div>
+    </div>
     {% else %}
-    <div>No subscribtions.</div>
+    <div>No suggestion for you... </div>
     {% endfor %}
 </div>
 {% endblock %}

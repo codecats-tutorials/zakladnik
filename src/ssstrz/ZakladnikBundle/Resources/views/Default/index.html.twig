@@ -38,70 +38,18 @@
       </a>
     </article>
     <div class="row container bookmarks">
-        <div class="col-md-4">
+        {% for bookmark in bookmarks %}
+        <div class="col-md-4 bookmark">
             <div>
-                <h3>Mój-klub</h3>
+                <h3>{{ bookmark.title }}</h3>
                 <p>
-                    <a href="#">moj-klub</a>
+                    <a href="{{ bookmark.url }}">{{ bookmark.title }}</a>
                 </p>
             </div>
         </div>
-        <div class="col-md-4">
-            <div>
-                <h3>Mój-klub</h3>
-                <p>
-                    <a href="#">moj-klub</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div>
-                <h3>Mój-klub</h3>
-                <p>
-                    <a href="#">moj-klub</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div>
-                <h3>Mój-klub</h3>
-                <p>
-                    <a href="#">moj-klub</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div>
-                <h3>Mój-klub</h3>
-                <p>
-                    <a href="#">moj-klub</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div>
-                <h3>Mój-klub</h3>
-                <p>
-                    <a href="#">moj-klub</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div>
-                <h3>Mój-klub</h3>
-                <p>
-                    <a href="#">moj-klub</a>
-                </p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div>
-                <h3>Mój-klub</h3>
-                <p>
-                    <a href="#">moj-klub</a>
-                </p>
-            </div>
-        </div>
+        {% else %}
+        No bookmarks.
+        {% endfor %}
     </div>
     {#{% trans %}Symfony2 is great{% endtrans %} {{ name }}!#}
 {% endblock %}

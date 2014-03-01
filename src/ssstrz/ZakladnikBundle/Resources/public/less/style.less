@@ -28,15 +28,35 @@ h3.brand *{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#49a5bf', GradientType=1 );
 }
 
-.bookmarks>*{
-    
-    padding: 10px;
-}
-.bookmarks>*>*{
+.bookmarks>div>*{
     border: 1px solid black;
     padding: 10px;
+    
+    color: #fff;
+
+border-color: #000 #002d59 #002d59;
+-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0.2),0 1px 0 #fff;
+-ms-box-shadow: inset 0 1px 3px rgba(0,0,0,0.2),0 1px 0 #fff;
+-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.2),0 1px 0 #fff;
+box-shadow: inset 0 1px 3px rgba(0,0,0,0.2),0 1px 0 #fff;
+filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#005ab4,EndColorStr=#175ea6);
+background-image: -moz-linear-gradient(top,#005ab4 0,#175ea6 100%);
+background-image: -ms-linear-gradient(top,#005ab4 0,#175ea6 100%);
+background-image: -o-linear-gradient(top,#005ab4 0,#175ea6 100%);
+background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#005ab4),color-stop(100%,#175ea6));
+background-image: -webkit-linear-gradient(top,#005ab4 0,#175ea6 100%);
+background-image: linear-gradient(to bottom,#005ab4 0,#175ea6 100%);
 }
+
 
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     width: 100%
+}
+.carousel{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.bookmark {
+
 }
