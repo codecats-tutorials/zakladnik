@@ -3,6 +3,9 @@
 {% block title %}Moje{% endblock %}
 
 {% block content %}
+{% for flashMessage in app.session.flashBag.get('notice') %}
+<div class="bg-info">{{ flashMessage }}</div>
+{% endfor %}
 <div class="row bookmarks">
     {% for bookmark in bookmarks %}
 <div class="col-md-4 col-lg-4">

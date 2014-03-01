@@ -30,10 +30,6 @@ ssstrz_zakladnik_register_create:
     pattern: /register/create
     defaults: { _controller: ssstrzZakladnikBundle:Account:create }
     
-ssstrz_zakladnik_login:
-    pattern: /login
-    defaults: { _controller: ssstrzZakladnikBundle:Account:login }
-    
 ssstrz_zakladnik_logout:
     pattern: /logout
     defaults: { _controller: ssstrzZakladnikBundle:Account:logout }
@@ -46,23 +42,8 @@ login_check:
   path: /login_check
 
 login:
-  path: /login_standard
+  path: /login
   defaults: { _controller: ssstrzZakladnikBundle:Account:login }
 
 account:
     path: /
-my:
-    pattern: /my
-    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:my }
-
-add:
-    pattern: /add
-    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:add }
-
-remove:
-    pattern: /remove
-    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:remove }
-
-suggestion:
-    pattern: /suggestion
-    defaults: { _controller: ssstrzZakladnikBundle:Bookmark:suggestion }

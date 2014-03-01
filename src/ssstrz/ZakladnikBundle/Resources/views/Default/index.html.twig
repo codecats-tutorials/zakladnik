@@ -45,6 +45,12 @@
                 <p>
                     <a href="{{ bookmark.url }}">{{ bookmark.title }}</a>
                 </p>
+                    {% if app.user %}
+                <hr>
+                <p>
+                    <a href="{{ path('ssstrz_zakladnik_subscribe', {id:bookmark.id}) }}">sub</a>
+                </p>
+                    {% endif %}
             </div>
         </div>
         {% else %}

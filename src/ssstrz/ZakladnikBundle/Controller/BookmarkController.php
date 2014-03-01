@@ -13,8 +13,11 @@ class BookmarkController extends Controller
     public function myAction()
     {
         if ( ! $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            
-            return $this->redirect($this->generateUrl('ssstrz_zakladnik_login'));
+            $this->get('session')->getFlashBag()->add(
+                'notice',
+                'Zaloguj się najpierw proszę'
+            );
+            return $this->redirect($this->generateUrl('login'));
         }
         $user = $this->getUser();
         $bookmarks = $user->getSubscriptions();
@@ -34,7 +37,7 @@ class BookmarkController extends Controller
         if ($form->isValid()) {
             if ( ! $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
                 
-                return $this->redirect($this->generateUrl('ssstrz_zakladnik_login'));
+                return $this->redirect($this->generateUrl('login'));
             }
             $em = $this->getDoctrine()->getManager();
             $user = $this->getUser();
@@ -68,10 +71,21 @@ class BookmarkController extends Controller
     {
         if ( ! $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
                 
-            return $this->redirect($this->generateUrl('ssstrz_zakladnik_login'));
+            return $this->redirect($this->generateUrl('login'));
         }
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
+        $subscrbtions = $user->getSubscriptions();
+        foreach ($subscrbtions as $subscribe) {
+            if ($subscribe->getId() == $id) {
+                $this->get('session')->getFlashBag()->add(
+                        'notice',
+                        'Aktualnie subskrybujesz zakładkę ' . $subscribe->getTitle()
+                );
+                
+                return $this->redirect($this->generateUrl('ssstrz_zakladnik_my'));
+            }
+        }
         $bookmarkRespository = $em->getRepository('ssstrzZakladnikBundle:Bookmark');
         $bookmark = $bookmarkRespository->find($id);
 
@@ -89,7 +103,7 @@ class BookmarkController extends Controller
     {
         if ( ! $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
                 
-            return $this->redirect($this->generateUrl('ssstrz_zakladnik_login'));
+            return $this->redirect($this->generateUrl('login'));
         }
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
@@ -110,7 +124,7 @@ class BookmarkController extends Controller
     {
         if ( ! $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
             
-            return $this->redirect($this->generateUrl('ssstrz_zakladnik_login'));
+            return $this->redirect($this->generateUrl('login'));
         }
         $em = $this->getDoctrine()->getManager();
         $bookmarkRespository = $em->getRepository('ssstrzZakladnikBundle:Bookmark');

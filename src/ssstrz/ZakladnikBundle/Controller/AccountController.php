@@ -55,7 +55,7 @@ class AccountController extends Controller
         $this->get('security.context')->setToken(null);
         $this->get('request')->getSession()->invalidate();
         
-        return $this->redirect($this->generateUrl('ssstrz_zakladnik_login'));
+        return $this->redirect($this->generateUrl('login'));
     }
 
     public function registerAction()
@@ -90,7 +90,7 @@ class AccountController extends Controller
             $em->persist($user);
             $em->flush();
             
-            return $this->redirect($this->generateUrl('ssstrz_zakladnik_login'));
+            return $this->redirect($this->generateUrl('login'));
         }
         
         return $this->render(

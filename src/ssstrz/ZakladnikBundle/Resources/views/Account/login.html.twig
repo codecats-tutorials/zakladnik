@@ -3,6 +3,11 @@
 {% block title %}Logowanie{% endblock %}
 
 {% block content %}
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<div class="bg-info">
+    {{ flashMessage }}
+</div>
+{% endfor %}
 {% if error %}
     <div>{{ error.message }}</div>
 {% endif %}
