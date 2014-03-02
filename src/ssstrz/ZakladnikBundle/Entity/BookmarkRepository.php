@@ -24,24 +24,35 @@ left join
     user_bookmark ub ON b.id = ub.bookmark_id
 left join
 	User u on ub.user_id = u.id
-	
+and b.id not in (
+select subb.id from Bookmark subb
+left join user_bookmark subub on subb.id = subub.bookmark_id 
+left join User subu on subub.user_id = subu.id
+where subu.id = 10)
 where u.id <> 1
 group by u.id
 having sub_counter > 2
 ;
          */
-        $qb = $this->createQueryBuilder('b')
+        $qb = $this->createQueryBuilder('sb');
+        $subscribtions = $qb
+                ->select('sb.id')->leftJoin('sb.subscribers', 'su')->where('su.id = 10')
+                ->getQuery()->getDQL()
+        ;
+        
+        $suggestions = $this->createQueryBuilder('b')
                 ->select('b', 'u')
                 ->addSelect('count(u.id) as subscriberCounter')
                 ->leftJoin('b.subscribers', 'u')
                 ->where('u <> :user')
+                ->andWhere($qb->expr()->notIn('b.id', $subscribtions))
                 ->groupBy('b.id')
                 ->having('subscriberCounter > :greaterThan')
                 ->setParameter('user', $user)
-                ->setParameter('greaterThan', $greaterThan)
+                ->setParameter('greaterThan', $greaterThan)->getQuery()->getResult()
         ;
 
-        return $qb->getQuery()->getResult();
+        return $suggestions;
     }
     public function findUrl($url) 
     {
